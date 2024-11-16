@@ -1,0 +1,16 @@
+.category{
+    height: 350px;
+    width: 350px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+.category img{
+    width: 100%;
+    object-fit: contain;
+    max-height: 250px;
+    padding: 0 10px;
+}
+.category a{
+    text-decoration: none;
+    color: rgb(35, 35, 35);
+}
