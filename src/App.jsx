@@ -4,14 +4,17 @@ import './App.css'
 import Header from './Component/Header/Header'
 import CarouselComponent from './Component/Carousel/CarouselComponent'
 import Category from './Component/Category/Category'
+import Product from './Component/Product/Product'
+import { Routing } from './Routing'
+import Loader from './Component/Loader/Loader'
 
 function App() {
 
   return (
     <>
-    <Header/>
-    <CarouselComponent/>
-    <Category/>
+    <Routing/>
+    
+     {/* <Loader/> */}
     </>
   )
 }

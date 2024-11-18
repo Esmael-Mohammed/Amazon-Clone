@@ -1,23 +1,19 @@
 import React from 'react';
 import { categoryData } from './categoryFullinfo';
+import classes from './category.module.css'
+import CategoryCard from './CategoryCard';
 
 const Category = () => {
   return (
-    <>
-      {
-        categoryData?.map((data, index) => (
-          <a href="" key={index}>
-            <span>
-              <h2>
-                {data?.title}
-              </h2>
-              <img src={data?.imgLink} alt={data?.title || 'Category'} />
-              <p>Shop Now</p>
-            </span>
-          </a>
-        ))
-      }
-    </>
+   <section className={classes.category_container}>
+
+     {
+       categoryData?.map((info,i) => (
+        <CategoryCard data={info} key={i}/>
+       ))
+     }
+   
+   </section>
   );
 };
 
