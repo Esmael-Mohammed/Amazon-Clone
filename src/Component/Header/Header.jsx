@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaSearch } from "react-icons/fa";
 import { SlLocationPin } from "react-icons/sl";
 import classes from './Header.module.css'
 import { BiCart } from "react-icons/bi";
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
+import { DataContext } from '../DataProvider/DataProvider';
 
 const Header = () => {
+   const[{basket},dispatch]=useContext(DataContext);
+   const totalItem=basket?.reduce((amount,item)=>{
+    return item.amount +amount;
+   },0)
   return (
-    <>
+    <section className={classes.fixed}>
     <section>
         <div className={classes.header_container}>
             <div className={classes.logo_container}>
                 {/* logo */}
-                <Link to="/">
+                <Link to={'/'}>
                 <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="amazon logo" />
                 </Link>
                 {/* delivery */}
@@ -43,12 +48,12 @@ const Header = () => {
             {/* right side */}
           
                 <div className={classes.order_container}>
-                    <Link to="" className={classes.language}>
+                    <Link  className={classes.language}>
 
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/800px-Flag_of_the_United_States.svg.png?20151118161041" alt="" />
-                    <section>
+                    <select>
                         <option value="">EN</option>
-                    </section>
+                    </select>
                     </Link>
                 {/* three component */}
                 <Link to="">
@@ -63,7 +68,7 @@ const Header = () => {
                 {/* cart */}
                 <Link to="/cart" className={classes.cart}>
                     <BiCart size={40}/>
-                    <span>0</span>
+                    <span>{totalItem}</span>
                 </Link>
                 </div>
                
@@ -72,7 +77,7 @@ const Header = () => {
         <LowerHeader/>
    
 
-    </>
+    </section>
   )
 }
 

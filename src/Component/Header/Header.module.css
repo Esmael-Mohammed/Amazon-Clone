@@ -135,6 +135,11 @@ gap: 10px;
     gap: 2px;
     align-items: center;
 }
+.fixed{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 @media screen and (max-width:576px){
     .header_container{
         display: flex;

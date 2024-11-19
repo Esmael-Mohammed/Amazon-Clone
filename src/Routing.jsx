@@ -11,7 +11,7 @@ import ProductDetails from './Pages/ProductDetails/ProductDetails'
 export const Routing = () => {
   return (
     <div>
-        <Router future={{ v7_startTransition: true }}>
+        <Router future={{ v7_relativeSplatPath: true }}>
           <Routes>
           <Route path="/" element={<Landing/>}/>
           <Route path="/auth" element={<Signup/>}/>

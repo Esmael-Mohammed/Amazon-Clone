@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import ProductCard from './ProductCard';
-import classes from './product.module.css'
+import classes from './Product.module.css'
 
 const Product = () => {
     const[products,setProduct]=useState();
@@ -23,7 +23,7 @@ const Product = () => {
   isLoading?(<Loader/>):(<section className={classes.product_container}>
   {
       products?.map((singleProduct)=>(
-          <ProductCard product={singleProduct} key={singleProduct.id}/>
+          <ProductCard product={singleProduct} key={singleProduct.id} renderAdd={true}/>
 
       ))
   }
