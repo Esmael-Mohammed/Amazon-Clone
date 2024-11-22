@@ -32,3 +32,15 @@
     grid-template-columns: repeat(4,1fr);
     place-items: center;
 } 
+@media screen and (max-width:768px) {
+    .category{
+        max-width: 250px;
+        margin: 30px;
+
+    }
+    
+    .category_container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}

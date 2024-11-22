@@ -13,6 +13,7 @@ const Results = () => {
   const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
+    setisLoading(true)
     axios
       .get(`${productUrl}/products/category/${categoryName}`)
       .then((res) => {
