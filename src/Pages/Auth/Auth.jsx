@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Layout from "../../Component/Layout/Layout";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import classes from "./Signup.module.css";
 import { auth } from "../../utils/firebase";
 import {
@@ -16,12 +16,13 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [{ user }, dispatch] = useContext(DataContext);
-  const navigate=useNavigate()
   const [isLoading, setisLoading] = useState({
     signIn: false,
     signUp: false,
   });
-  console.log(user);
+  const navigate=useNavigate()
+  const navStateData=useLocation()
+  console.log(navStateData)
   const authhandeler = (e) => {
     e.preventDefault();
     console.log(e.target.name);
@@ -34,12 +35,13 @@ const Auth = () => {
             user: userInfo.user,
           });
           setisLoading({ ...isLoading, signIn: false });
-          navigate("/")
+          navigate(navStateData?.state?.redirect || "/")
         })
         .catch((err) => {
           setError(err.message);
           setisLoading({ ...isLoading, signIn: false });
-          navigate("/")
+          navigate(navStateData?.state?.redirect || "/")
+
         });
     } else {
       setisLoading({ ...isLoading, signUp: true });
@@ -70,6 +72,19 @@ const Auth = () => {
         {/* form */}
         <div className={classes.login_container}>
           <h1>Sign-In</h1>
+          {
+            navStateData?.state?.msg &&(
+              <small style={{
+                padding:"5px",
+                textAlign:"center",
+                color:"red",
+                fontWeight:"bold"
+
+              }}>
+                {navStateData?.state?.msg}
+              </small>
+            )
+          }
           <form action="">
             <div>
               <label htmlFor="email">Email</label>

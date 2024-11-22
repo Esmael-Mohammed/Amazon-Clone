@@ -9,6 +9,7 @@ import { axiosInstance } from "../../Api/axios";
 import { ClipLoader } from "react-spinners";
 import { db } from "../../utils/firebase";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -23,6 +24,7 @@ const Payment = () => {
   const [cardError, setCardError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
+  const navigate=useNavigate()
   const [processing, setProcessing] = useState(false);
   const handleChange = (e) => {
     console.log(e);
@@ -49,20 +51,26 @@ const Payment = () => {
       });
       // console.log(confirmation);
       // console.log(paymentIntent)
-      setProcessing(false);
       // 3.after the confirmation --> order fire store database save clear basket
-      const ordersRef=collection()
-      
-      await db
-        .collection("users")
-        .doc(user.uid)
-        .collection("orders")
-        .doc(paymentIntent.id)
-        .set({
-          basket: basket,
-          amount: paymentIntent.amount,
-          created: paymentIntent.created,
-        });
+      const ordersRef=collection(db,"users",user.uid,"orders");
+      const orderDoc=doc(ordersRef,paymentIntent.id);
+      await setDoc(orderDoc,{
+        basket:basket,
+        amount:paymentIntent.amount,
+        created:paymentIntent.created,
+      });
+      setProcessing(false);
+      navigate("/orders",{state:{msg:"you have placed new Order"}})
+      // await db
+      //   .collection("users")
+      //   .doc(user.uid)
+      //   .collection("orders")
+      //   .doc(paymentIntent.id)
+      //   .set({
+      //     basket: basket,
+      //     amount: paymentIntent.amount,
+      //     created: paymentIntent.created,
+      //   });
     } catch (error) {
       console.log(error);
       setProcessing(false);
