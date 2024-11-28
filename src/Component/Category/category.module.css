@@ -29,18 +29,11 @@
     position: relative;
     margin-top: -10%;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    max-width: 1600px;
+    place-items: center;
+    gap: 50px;
+    margin-right: auto;
+    margin-left: auto;
     place-items: center;
 } 
-@media screen and (max-width:768px) {
-    .category{
-        max-width: 250px;
-        margin: 30px;
-
-    }
-    
-    .category_container{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
-}

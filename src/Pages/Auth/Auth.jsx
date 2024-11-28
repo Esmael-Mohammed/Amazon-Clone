@@ -46,7 +46,7 @@ const Auth = () => {
     } else {
       setisLoading({ ...isLoading, signUp: true });
       createUserWithEmailAndPassword(auth, email, password)
-        .then((user) => {
+        .then((userInfo) => {
           dispatch({
             type: Type.SET_USER,
             user: userInfo.user,
