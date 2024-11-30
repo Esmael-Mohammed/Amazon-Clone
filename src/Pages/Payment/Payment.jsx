@@ -43,7 +43,7 @@ const Payment = () => {
       });
       // console.log(reponse.data);
 
-      // 2. clinet sit create side confimation
+      // 2. clinet site create side confimation
       const clientSecret = reponse.data?.clientSecret;
       const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -66,16 +66,7 @@ const Payment = () => {
       })
       setProcessing(false);
       navigate("/orders",{state:{msg:"you have placed new Order"}})
-      // await db
-      //   .collection("users")
-      //   .doc(user.uid)
-      //   .collection("orders")
-      //   .doc(paymentIntent.id)
-      //   .set({
-      //     basket: basket,
-      //     amount: paymentIntent.amount,
-      //     created: paymentIntent.created,
-      //   });
+    
     } catch (error) {
       console.log(error);
       setProcessing(false);

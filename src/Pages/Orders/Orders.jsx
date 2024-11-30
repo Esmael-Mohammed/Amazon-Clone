@@ -19,8 +19,8 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     if (user) {
-      const userOrdersRef = collection(db, "users", user.uid, "orders");
-      const qry = query(userOrdersRef, orderBy("created", "desc"));
+      const userCollection= collection(db, "users", user.uid, "orders");
+      const qry = query(userCollection, orderBy("created", "desc"));
       onSnapshot(qry, (snapshot) => {
         setOrders(
           snapshot.docs.map((doc) => ({
@@ -30,9 +30,7 @@ const Orders = () => {
         );
         console.log(snapshot);
       });
-      // db.collection("users").doc(user.id).collection("orders").orderBy("created","desc").onSnapshot((snapshot)=>{
-      //   console.log(snapshot)
-      // })
+
     } else {
       setOrders([]);
     }
