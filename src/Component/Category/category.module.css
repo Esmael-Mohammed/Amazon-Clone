@@ -39,6 +39,7 @@
 }
 @media (max-width: 1440px) and (min-width: 1024px) {
     .category_container {
+        max-width: 1400px;
         grid-template-columns: repeat(4, 1fr); 
         gap: 30px; 
     }
@@ -49,9 +50,7 @@
     .category_container {
         grid-template-columns: repeat(4, 1fr); 
         gap: 10px; 
-        margin-right: auto;
-        margin-left: auto;
-        place-items: center;
+       
     }
 }
 @media screen and (max-width: 768px) {
