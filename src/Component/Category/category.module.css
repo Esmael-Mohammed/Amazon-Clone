@@ -39,18 +39,18 @@
 }
 @media screen and (max-width: 1024px) {
     .category{
-        width: 230px;
-        height: 230px;
+        width: 215px;
+        height: 215px;
 
     }
     .category img{
-        max-height: 130px;
+        max-height: 120px;
     }
   .category_container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 0 auto;
-    gap: 30px;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 @media screen and (max-width: 768px) {
