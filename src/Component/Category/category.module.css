@@ -38,6 +38,14 @@
   place-items: center;
 }
 @media screen and (max-width: 1024px) {
+    .category{
+        width: 230px;
+        height: 230px;
+
+    }
+    .category img{
+        max-height: 130px;
+    }
   .category_container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
